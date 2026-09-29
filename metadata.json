@@ -1,0 +1,10 @@
+{
+  "name": "Hayitali G'ulomov - GIS & Kartografiya Portfoliosi",
+  "description": "Geofazoviy tahlillar, xaritalash, masofadan zondlash (Remote Sensing) va QGIS/ArcGIS loyihalari uchun zamonaviy shaxsiy portfolio.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

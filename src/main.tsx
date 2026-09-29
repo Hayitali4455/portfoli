@@ -1,0 +1,26 @@
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import App from './App.tsx';
+import { AuthProvider } from './context/AuthContext.tsx';
+import { SiteContentProvider } from './context/SiteContentContext.tsx';
+import { DownloadPermissionsProvider } from './context/DownloadPermissionsContext.tsx';
+import { ThemeProvider } from './context/ThemeContext.tsx';
+import { LanguageProvider } from './context/LanguageContext.tsx';
+import './index.css';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ThemeProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <SiteContentProvider>
+            <DownloadPermissionsProvider>
+              <App />
+            </DownloadPermissionsProvider>
+          </SiteContentProvider>
+        </AuthProvider>
+      </LanguageProvider>
+    </ThemeProvider>
+  </StrictMode>,
+);
+

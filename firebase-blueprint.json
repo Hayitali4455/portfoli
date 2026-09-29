@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "SiteContent": {
+      "title": "Site Content & Texts",
+      "description": "Dynamic text overrides for the entire website, editable by superadmin",
+      "type": "object",
+      "properties": {
+        "texts": { "type": "object" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      }
+    },
+    "GISProject": {
+      "title": "GIS Project & Ready Map",
+      "description": "Spatial maps, AI tools, satellite data and cartographic projects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "shortDescription": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "tools": { "type": "array" },
+        "imageUrl": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "category"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Registered user profile with phone, name, email, and verification status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phoneNumber": { "type": "string" },
+        "isEmailVerified": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["id", "fullName", "email", "phoneNumber", "isEmailVerified"]
+    },
+    "EmailVerification": {
+      "title": "Email Verification Code",
+      "description": "Stores pending 6-digit email verification codes for account confirmation",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "code": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["email", "code", "expiresAt"]
+    },
+    "DownloadRequest": {
+      "title": "Download Request",
+      "description": "Requests for permission to download proprietary GIS and AI tools .zip packages",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectTitle": { "type": "string" },
+        "userEmail": { "type": "string", "format": "email" },
+        "userName": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "requestedAt": { "type": "string" },
+        "respondedAt": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "projectId", "projectTitle", "userEmail", "status", "requestedAt"]
+    }
+  },
+  "firestore": {
+    "/site_content/{contentId}": {
+      "entity": "SiteContent",
+      "description": "Dynamic editable site content documents."
+    },
+    "/gis_projects/{projectId}": {
+      "entity": "GISProject",
+      "description": "Ready GIS maps and spatial projects uploaded to the site."
+    },
+    "/users/{userId}": {
+      "entity": "UserProfile",
+      "description": "User profile data."
+    },
+    "/email_verifications/{verificationId}": {
+      "entity": "EmailVerification",
+      "description": "Pending verification codes for registering users."
+    },
+    "/download_requests/{requestId}": {
+      "entity": "DownloadRequest",
+      "description": "Download permission requests from users needing admin approval."
+    }
+  }
+}

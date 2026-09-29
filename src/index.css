@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom map & GIS background patterns */
+.gis-grid-bg {
+  background-image: 
+    radial-gradient(rgba(16, 185, 129, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(14, 165, 233, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.topographic-lines {
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(16, 185, 129, 0.03) 0px,
+    rgba(16, 185, 129, 0.03) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+}
+
+/* Leaflet container adjustments */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  border-radius: 0.75rem;
+}
+
+@keyframes wobbleSmile {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-6px) rotate(-3deg); }
+  40% { transform: translateX(5px) rotate(3deg); }
+  60% { transform: translateX(-4px) rotate(-2deg); }
+  80% { transform: translateX(3px) rotate(2deg); }
+}
+
+.animate-wobble-smile {
+  animation: wobbleSmile 0.5s ease-in-out;
+}
+
+/* =========================================================================
+   THEME STYLES (O'ta qora / Standart tungi / Yorug' rejim)
+   ========================================================================= */
+
+/* MIDNIGHT (O'ta Qora / Deep OLED Black) */
+html.theme-midnight body {
+  background-color: #000000 !important;
+  color: #f3f4f6;
+}
+html.theme-midnight .bg-slate-950 {
+  background-color: #000000 !important;
+}
+html.theme-midnight .bg-slate-900 {
+  background-color: #050811 !important;
+}
+html.theme-midnight .bg-slate-800 {
+  background-color: #0c1220 !important;
+}
+html.theme-midnight .bg-slate-950\/95,
+html.theme-midnight .bg-slate-950\/90,
+html.theme-midnight .bg-slate-950\/85,
+html.theme-midnight .bg-slate-950\/80,
+html.theme-midnight .bg-slate-950\/70,
+html.theme-midnight .bg-slate-950\/60 {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+}
+html.theme-midnight .border-slate-800 {
+  border-color: #111827 !important;
+}
+html.theme-midnight .border-slate-700 {
+  border-color: #1f2937 !important;
+}
+
+/* LIGHT MODE (Yorug' Rejim / Clean Daylight) */
+html.theme-light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+html.theme-light .gis-grid-bg {
+  background-image: 
+    radial-gradient(rgba(16, 185, 129, 0.18) 1px, transparent 1px),
+    radial-gradient(rgba(14, 165, 233, 0.14) 1px, transparent 1px);
+}
+html.theme-light .bg-slate-950 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a;
+}
+html.theme-light .bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #0f172a;
+}
+html.theme-light .bg-slate-800 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a;
+}
+html.theme-light .bg-slate-950\/95,
+html.theme-light .bg-slate-950\/90,
+html.theme-light .bg-slate-950\/85,
+html.theme-light .bg-slate-950\/80,
+html.theme-light .bg-slate-950\/70,
+html.theme-light .bg-slate-950\/60 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+html.theme-light .bg-slate-900\/95,
+html.theme-light .bg-slate-900\/90,
+html.theme-light .bg-slate-900\/80 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+html.theme-light .text-white {
+  color: #0f172a !important;
+}
+html.theme-light .text-slate-100 {
+  color: #0f172a !important;
+}
+html.theme-light .text-slate-200 {
+  color: #1e293b !important;
+}
+html.theme-light .text-slate-300 {
+  color: #334155 !important;
+}
+html.theme-light .text-slate-400 {
+  color: #475569 !important;
+}
+html.theme-light .border-slate-800 {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light .border-slate-700 {
+  border-color: #cbd5e1 !important;
+}
+html.theme-light .leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1;
+}
+html.theme-light .leaflet-popup-tip {
+  background: #ffffff !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-popup-tip {
+  background: #0f172a !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: #0f172a !important;
+  color: #38bdf8 !important;
+  border-color: #334155 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #1e293b !important;
+  color: #34d399 !important;
+}
+
+/* =========================================================================
+   UNIFIED HEADER & HERO (1-rasm va 2-rasm bitta umumiy fon bo'lishi uchun)
+   ========================================================================= */
+.unified-gis-hero,
+html.theme-light .unified-gis-hero,
+html.theme-midnight .unified-gis-hero {
+  background-color: #020617 !important;
+  color: #f8fafc !important;
+}
+
+.unified-gis-header-transparent,
+html.theme-light .unified-gis-header-transparent,
+html.theme-midnight .unified-gis-header-transparent {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Ensure text and cards inside the satellite Hero keep their crisp contrast */
+.unified-gis-hero h1,
+html.theme-light .unified-gis-hero h1 {
+  color: #ffffff !important;
+}
+
+.unified-gis-hero .text-white,
+html.theme-light .unified-gis-hero .text-white {
+  color: #ffffff !important;
+}
+
+.unified-gis-hero .text-slate-200,
+html.theme-light .unified-gis-hero .text-slate-200 {
+  color: #e2e8f0 !important;
+}
+
+.unified-gis-hero .text-slate-300,
+html.theme-light .unified-gis-hero .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+.unified-gis-hero .text-slate-400,
+html.theme-light .unified-gis-hero .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+.unified-gis-hero .bg-slate-950\/85,
+.unified-gis-hero .bg-slate-950\/80,
+.unified-gis-hero .bg-slate-950\/60,
+html.theme-light .unified-gis-hero .bg-slate-950\/85,
+html.theme-light .unified-gis-hero .bg-slate-950\/80,
+html.theme-light .unified-gis-hero .bg-slate-950\/60 {
+  background-color: rgba(2, 6, 23, 0.75) !important;
+  color: #f8fafc !important;
+}
+
+.unified-gis-hero .border-slate-800,
+.unified-gis-hero .border-slate-800\/80,
+.unified-gis-hero .border-slate-800\/90,
+html.theme-light .unified-gis-hero .border-slate-800,
+html.theme-light .unified-gis-hero .border-slate-800\/80,
+html.theme-light .unified-gis-hero .border-slate-800\/90 {
+  border-color: rgba(30, 41, 59, 0.8) !important;
+}
+
